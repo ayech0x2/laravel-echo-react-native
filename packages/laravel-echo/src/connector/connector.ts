@@ -69,21 +69,6 @@ export abstract class Connector<
             ...options,
             broadcaster: options.broadcaster as TBroadcastDriver,
         };
-
-        let token = this.csrfToken();
-
-        if (token) {
-            this.options.auth.headers["X-CSRF-TOKEN"] = token;
-            this.options.userAuthentication.headers["X-CSRF-TOKEN"] = token;
-        }
-
-        token = this.options.bearerToken;
-
-        if (token) {
-            this.options.auth.headers["Authorization"] = "Bearer " + token;
-            this.options.userAuthentication.headers["Authorization"] =
-                "Bearer " + token;
-        }
     }
 
     /**
